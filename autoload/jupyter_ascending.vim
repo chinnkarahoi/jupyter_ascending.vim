@@ -1,6 +1,5 @@
 function! s:on_stdout(j, d, e)
   if len(a:d) > 0 && len(a:d[0]) > 0
-    echom '[JupyterAscending]' a:d
   endif
 endfunction
 
@@ -31,6 +30,7 @@ function! jupyter_ascending#sync() abort
 endfunction
 
 function! jupyter_ascending#execute() abort
+  silent! w
   let file_name = expand("%:p")
 
   if match(file_name, g:jupyter_ascending_match_pattern) < 0
@@ -48,6 +48,7 @@ function! jupyter_ascending#execute() abort
 endfunction
 
 function! jupyter_ascending#execute_all() abort
+  silent! w
   let file_name = expand("%:p")
 
   if match(file_name, g:jupyter_ascending_match_pattern) < 0
